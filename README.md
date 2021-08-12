@@ -1,4 +1,4 @@
-# Mineria-de-Datos
+# Mineria de Datos
 
 ## Fase 1
 
