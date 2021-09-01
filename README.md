@@ -10,4 +10,4 @@
 
 [Tarea 3. Ej Básicos de Python](https://github.com/lluviaeliiza/Mineria-de-Datos/blob/main/Ej_B%C3%A1sicos_Python.ipynb)
 
-[Tarea 4. 1er Avance de PIA] (https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/Avance1_PIA_Equipo5.ipynb)
+[Tarea 4. 1er Avance de PIA](https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/Avance1_PIA_Equipo5.ipynb)
