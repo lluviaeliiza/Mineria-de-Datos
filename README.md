@@ -13,3 +13,5 @@
 [Tarea 4. Ej de Limpieza](https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/Ej_Limpieza_Equipo5.ipynb)
 
 [Tarea  5. 1er Avance de PIA](https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/Avance1_PIA_Equipo5.ipynb)
+
+## Fase 2
