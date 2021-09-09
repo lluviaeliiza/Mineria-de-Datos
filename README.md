@@ -19,3 +19,5 @@
 [Tarea 6. Presentación: "Reglas de Asociación"](https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/Presentaci%C3%B3n_ReglasdeAsociaci%C3%B3n_Equipo5.pdf)
 
 [(Preguntas de la Presentación)](https://github.com/SebastianCanizales/SebastianCan/blob/main/Preguntas_Equipo5.pdf)
+
+[(Código de la presentación)](https://github.com/lluviaeliiza/Mineria-de-Datos/blob/main/C%C3%B3digo_de_la_presentaci%C3%B3n.ipynb)
