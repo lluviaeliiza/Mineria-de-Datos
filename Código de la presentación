@@ -5,7 +5,9 @@
     "colab": {
       "name": "Untitled1.ipynb",
       "provenance": [],
-      "authorship_tag": "ABX9TyMZu0YDDmmuDuG/Y73KgB+f"
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyNvNJ8ilHZ3ZJYP3kNfubou",
+      "include_colab_link": true
     },
     "kernelspec": {
       "name": "python3",
@@ -19,12 +21,22 @@
     {
       "cell_type": "markdown",
       "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lluviaeliiza/Mineria-de-Datos/blob/main/C%C3%B3digo%20de%20la%20presentaci%C3%B3n\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
         "id": "AC76al36C1Wq"
       },
       "source": [
-        "##Ejercicio de la presentación:\n",
+        "###Ejercicio de la presentación:\n",
         "\n",
-        "Se muestran 4 transacciones, donde representan a 4 usuarios que visualizan ciertas peliculas."
+        "**Se muestran 4 transacciones, donde representan a 4 usuarios que visualizan ciertas peliculas.**"
       ]
     },
     {
