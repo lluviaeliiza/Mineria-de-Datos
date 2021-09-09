@@ -1,0 +1,528 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled1.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyMZu0YDDmmuDuG/Y73KgB+f"
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "AC76al36C1Wq"
+      },
+      "source": [
+        "##Ejercicio de la presentación:\n",
+        "\n",
+        "Se muestran 4 transacciones, donde representan a 4 usuarios que visualizan ciertas peliculas."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "m0Dao8ChDM8v"
+      },
+      "source": [
+        "\n",
+        "**Instalación de Librerías:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Bd6iei9FoSs1",
+        "outputId": "5683062d-5d37-4f74-88a8-1c4732f2efc3"
+      },
+      "source": [
+        "pip install mlxtend"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Requirement already satisfied: mlxtend in /usr/local/lib/python3.7/dist-packages (0.14.0)\n",
+            "Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from mlxtend) (57.4.0)\n",
+            "Requirement already satisfied: scikit-learn>=0.18 in /usr/local/lib/python3.7/dist-packages (from mlxtend) (0.22.2.post1)\n",
+            "Requirement already satisfied: scipy>=0.17 in /usr/local/lib/python3.7/dist-packages (from mlxtend) (1.4.1)\n",
+            "Requirement already satisfied: matplotlib>=1.5.1 in /usr/local/lib/python3.7/dist-packages (from mlxtend) (3.2.2)\n",
+            "Requirement already satisfied: pandas>=0.17.1 in /usr/local/lib/python3.7/dist-packages (from mlxtend) (1.1.5)\n",
+            "Requirement already satisfied: numpy>=1.10.4 in /usr/local/lib/python3.7/dist-packages (from mlxtend) (1.19.5)\n",
+            "Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=1.5.1->mlxtend) (0.10.0)\n",
+            "Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=1.5.1->mlxtend) (2.4.7)\n",
+            "Requirement already satisfied: python-dateutil>=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=1.5.1->mlxtend) (2.8.2)\n",
+            "Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib>=1.5.1->mlxtend) (1.3.1)\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from cycler>=0.10->matplotlib>=1.5.1->mlxtend) (1.15.0)\n",
+            "Requirement already satisfied: pytz>=2017.2 in /usr/local/lib/python3.7/dist-packages (from pandas>=0.17.1->mlxtend) (2018.9)\n",
+            "Requirement already satisfied: joblib>=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn>=0.18->mlxtend) (1.0.1)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "sMso-HKBTNwL",
+        "outputId": "2563d8f7-85a9-462f-db15-18946dd2540a"
+      },
+      "source": [
+        "pip install pandas"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Requirement already satisfied: pandas in /usr/local/lib/python3.7/dist-packages (1.1.5)\n",
+            "Requirement already satisfied: numpy>=1.15.4 in /usr/local/lib/python3.7/dist-packages (from pandas) (1.19.5)\n",
+            "Requirement already satisfied: python-dateutil>=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas) (2.8.2)\n",
+            "Requirement already satisfied: pytz>=2017.2 in /usr/local/lib/python3.7/dist-packages (from pandas) (2018.9)\n",
+            "Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil>=2.7.3->pandas) (1.15.0)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "zgeBLgFhDQ-U"
+      },
+      "source": [
+        "**Creación de la lista de datos:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ENpTp63pTXxq"
+      },
+      "source": [
+        "lista_datos = [[\"pelicula1\",\"pelicula2\",\"pelicula3\"],\n",
+        "               [\"pelicula1\",\"pelicula2\"],\n",
+        "               [\"pelicula1\",\"pelicula3\"],\n",
+        "               [\"pelicula2\",\"pelicula4\"]]"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aqWVZbpoqB-P",
+        "outputId": "890fd8d9-06df-4e09-8785-4113b5c5ded2"
+      },
+      "source": [
+        "print(lista_datos)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[['pelicula1', 'pelicula2', 'pelicula3'], ['pelicula1', 'pelicula2'], ['pelicula1', 'pelicula3'], ['pelicula2', 'pelicula4']]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KHEGpo31DvTc"
+      },
+      "source": [
+        "**Transformar la lista de datos a un DataFrame, con valores booleanos:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ft4PbJxJTlp5"
+      },
+      "source": [
+        "import pandas as pd\n",
+        "from mlxtend.preprocessing import TransactionEncoder"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gHnO4YHtURoz"
+      },
+      "source": [
+        "te = TransactionEncoder()\n",
+        "te_array = te.fit(lista_datos).transform(lista_datos)\n",
+        "datos = pd.DataFrame(te_array, columns=te.columns_)"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 173
+        },
+        "id": "3zlSZXL5U1K7",
+        "outputId": "0ad9b166-d847-47db-aade-076add5a7e67"
+      },
+      "source": [
+        "datos"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>pelicula1</th>\n",
+              "      <th>pelicula2</th>\n",
+              "      <th>pelicula3</th>\n",
+              "      <th>pelicula4</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>True</td>\n",
+              "      <td>True</td>\n",
+              "      <td>True</td>\n",
+              "      <td>False</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>True</td>\n",
+              "      <td>True</td>\n",
+              "      <td>False</td>\n",
+              "      <td>False</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>True</td>\n",
+              "      <td>False</td>\n",
+              "      <td>True</td>\n",
+              "      <td>False</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>False</td>\n",
+              "      <td>True</td>\n",
+              "      <td>False</td>\n",
+              "      <td>True</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   pelicula1  pelicula2  pelicula3  pelicula4\n",
+              "0       True       True       True      False\n",
+              "1       True       True      False      False\n",
+              "2       True      False       True      False\n",
+              "3      False       True      False       True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 111
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "4gjpFfR1D8wm"
+      },
+      "source": [
+        "**Encontrar la frecuencia de ocurrencias de cada item:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "LHK752Kvj92r"
+      },
+      "source": [
+        "from mlxtend.frequent_patterns import apriori\n",
+        "frecuencia_items = apriori(datos, min_support=0.2, use_colnames=True)"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 328
+        },
+        "id": "OJiZ8eIXVo1i",
+        "outputId": "7fff0954-b8d2-47ea-cba5-2035ea7cb852"
+      },
+      "source": [
+        "frecuencia_items"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>support</th>\n",
+              "      <th>itemsets</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0.75</td>\n",
+              "      <td>(pelicula1)</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0.75</td>\n",
+              "      <td>(pelicula2)</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0.50</td>\n",
+              "      <td>(pelicula3)</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>0.25</td>\n",
+              "      <td>(pelicula4)</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>0.50</td>\n",
+              "      <td>(pelicula1, pelicula2)</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>0.50</td>\n",
+              "      <td>(pelicula1, pelicula3)</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>0.25</td>\n",
+              "      <td>(pelicula3, pelicula2)</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>0.25</td>\n",
+              "      <td>(pelicula4, pelicula2)</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>0.25</td>\n",
+              "      <td>(pelicula1, pelicula3, pelicula2)</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   support                           itemsets\n",
+              "0     0.75                        (pelicula1)\n",
+              "1     0.75                        (pelicula2)\n",
+              "2     0.50                        (pelicula3)\n",
+              "3     0.25                        (pelicula4)\n",
+              "4     0.50             (pelicula1, pelicula2)\n",
+              "5     0.50             (pelicula1, pelicula3)\n",
+              "6     0.25             (pelicula3, pelicula2)\n",
+              "7     0.25             (pelicula4, pelicula2)\n",
+              "8     0.25  (pelicula1, pelicula3, pelicula2)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 113
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "GgXXGEeIEkEX"
+      },
+      "source": [
+        "**Encontrar las reglas de asociación:**"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "QD_Z9yNLWm36"
+      },
+      "source": [
+        "from mlxtend.frequent_patterns import association_rules\n",
+        "\n",
+        "reglas = association_rules(frecuencia_items, metric=\"confidence\")"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 142
+        },
+        "id": "wgl0xC2cX8GX",
+        "outputId": "40affa79-37db-4a13-a7ef-32aa16469f45"
+      },
+      "source": [
+        "reglas"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>antecedents</th>\n",
+              "      <th>consequents</th>\n",
+              "      <th>antecedent support</th>\n",
+              "      <th>consequent support</th>\n",
+              "      <th>support</th>\n",
+              "      <th>confidence</th>\n",
+              "      <th>lift</th>\n",
+              "      <th>leverage</th>\n",
+              "      <th>conviction</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>(pelicula3)</td>\n",
+              "      <td>(pelicula1)</td>\n",
+              "      <td>0.50</td>\n",
+              "      <td>0.75</td>\n",
+              "      <td>0.50</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.333333</td>\n",
+              "      <td>0.1250</td>\n",
+              "      <td>inf</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>(pelicula4)</td>\n",
+              "      <td>(pelicula2)</td>\n",
+              "      <td>0.25</td>\n",
+              "      <td>0.75</td>\n",
+              "      <td>0.25</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.333333</td>\n",
+              "      <td>0.0625</td>\n",
+              "      <td>inf</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>(pelicula3, pelicula2)</td>\n",
+              "      <td>(pelicula1)</td>\n",
+              "      <td>0.25</td>\n",
+              "      <td>0.75</td>\n",
+              "      <td>0.25</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>1.333333</td>\n",
+              "      <td>0.0625</td>\n",
+              "      <td>inf</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "              antecedents  consequents  ...  leverage  conviction\n",
+              "0             (pelicula3)  (pelicula1)  ...    0.1250         inf\n",
+              "1             (pelicula4)  (pelicula2)  ...    0.0625         inf\n",
+              "2  (pelicula3, pelicula2)  (pelicula1)  ...    0.0625         inf\n",
+              "\n",
+              "[3 rows x 9 columns]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 115
+        }
+      ]
+    }
+  ]
+}
