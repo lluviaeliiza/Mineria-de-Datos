@@ -21,3 +21,8 @@
 [(Preguntas de la Presentación)](https://github.com/SebastianCanizales/SebastianCan/blob/main/Preguntas_Equipo5.pdf)
 
 [(Código de la presentación)](https://github.com/lluviaeliiza/Mineria-de-Datos/blob/main/C%C3%B3digo_de_la_presentaci%C3%B3n.ipynb)
+
+[Tarea 7. Ej de Visualizacion] (
+
+[Tarea 8. 2do Avance de PIA] (https://github.com/lluviaeliiza/Mineria-de-Datos/blob/main/Segundo_Avance_PIA.ipynb)
+
