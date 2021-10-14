@@ -26,6 +26,7 @@
 
 [Tarea 8.2do Avance de PIA (INCORRECTO 1)](https://github.com/lluviaeliiza/Mineria-de-Datos/blob/main/Segundo_Avanza_PIA.ipynb)
 
-[Tarea 8. 2do Avance de PIA](https://github.com/lluviaeliiza/Mineria-de-Datos/blob/main/Segundo_Avance_PIA.ipynb)
+[2do Avance de PIA (INCORRECTO 2)](https://github.com/SebastianCanizales/SebastianCan/blob/main/Ejercicio_de_t%C3%A9cnicas_de_miner%C3%ADa%201era%20base%20(no%20correcta).ipynb)
 
+[2do Avance de PIA (CORRECTO)](https://github.com/SebastianCanizales/SebastianCan/blob/main/Ej_Tecnicas_Mineria.ipynb)
 
