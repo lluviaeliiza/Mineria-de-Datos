@@ -24,5 +24,8 @@
 
 [Tarea 7. Ej de Visualización](https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/Pr%C3%A1ctica_Visualizaci%C3%B3n.ipynb)
 
+[Tarea 8.2do Avance de PIA (INCORRECTO 1)](https://github.com/lluviaeliiza/Mineria-de-Datos/blob/main/Segundo_Avanza_PIA.ipynb)
+
 [Tarea 8. 2do Avance de PIA](https://github.com/lluviaeliiza/Mineria-de-Datos/blob/main/Segundo_Avance_PIA.ipynb)
+
 
