@@ -30,3 +30,6 @@
 
 [2do Avance de PIA (CORRECTO)](https://github.com/SebastianCanizales/SebastianCan/blob/main/Ej_Tecnicas_Mineria.ipynb)
 
+## Fase 3
+
+[3er Avance de PIA](https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/PREDICCI%C3%93N_DE_INSUFICIENCIA_CARDIACA.ipynb)
