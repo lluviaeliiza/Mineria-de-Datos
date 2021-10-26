@@ -33,3 +33,5 @@
 ## Fase 3
 
 [3er Avance de PIA](https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/PREDICCI%C3%93N_DE_INSUFICIENCIA_CARDIACA.ipynb)
+
+[PÓSTER FINAL](https://github.com/KatiaOrtiz20/Mineria_de_datos/blob/main/PREDICCI%C3%93N%20DE%20INSUFICIENCIA%20CARDIACA.pdf)
